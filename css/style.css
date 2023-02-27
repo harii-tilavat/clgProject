@@ -2,6 +2,33 @@
   background-color: rgba(0, 168, 255, 0.9);
 }
 
+.blue {
+  color: rgba(0, 168, 255, 0.9);
+}
+
+.login-btn {
+  color: white;
+  text-decoration: none;
+  padding: 10px 25px;
+  background-color: rgba(0, 168, 255, 0.9);
+  border-radius: 30px;
+  transition: 0.2s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.mybtn {
+  color: white;
+  text-decoration: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  transition: 0.2s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.h-100px {
+  height: 80px !important;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -32,6 +59,13 @@ i {
 }
 .header .topHeader ul li a {
   color: white !important;
+  padding: 5px 20px;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+.header .topHeader ul li a:hover, .header .topHeader ul li .active {
+  color: rgb(97, 97, 97) !important;
+  background-color: white;
 }
 .header .header-section .center-div {
   margin: 0px auto;
@@ -243,6 +277,15 @@ i {
   text-decoration: none;
   color: white;
   font-weight: 500;
+}
+
+.about {
+  background-color: #f0f0f0;
+  margin: 100px 0;
+  padding: 100px 0;
+}
+.about .about-us h1 {
+  font-size: 5em;
 }
 
 @media only screen and (max-width: 991px) {
