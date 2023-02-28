@@ -17,7 +17,7 @@
         }
 
         .mycontainer {
-            width: 800px;
+            width: 60%;
             margin: 0px auto;
             padding: 50px;
         }
@@ -44,8 +44,8 @@
 
             });
             $('#div1').css('color', 'red');
-            $("#password").keyup(function () {
-                document.getElementById("password").maxLength = "8";
+            $("#pass").keyup(function () {
+                document.getElementById("pass").maxLength = "8";
                 var n1 = $(this).val().length;
                 var max = 8;
                 n1 = max - n1;
@@ -53,17 +53,19 @@
                 if (n1 > 0) {
 
                     $('#div1').text(n1 + " Digits Remianing");
+                    $('#pass').css('border','2px solid red');
 
                 } else {
                     $('#div1').text("OKAY!!");
                     $('#div1').css('color', 'green');
+                    $('#pass').css('border','2px solid #34F458');
                 }
             });
             $('#btn-check').click(function () {
-                var nm = document.getElementById("uname").value;
-                var mail = document.getElementById("mail").value;
+                var nm = document.getElementById("username").value;
+                var mail = document.getElementById("email").value;
                 var pass = document.getElementById("pass").value;
-                if(nm!="" && mail!= "" && pass!=""){
+                if(nm!="" && mail!= "" && pass!="" && pass.length==8){
                     alert("Login Successfully ! 😊 ");
                     window.location.replace("home.html");
                     return;
@@ -133,22 +135,22 @@
     <div class="myform ">
         <div class="mycontainer">
 
-            <h1 class="login-text text-center">Login Here</h1>
+            <h1 class="login-text text-center ">Login Here</h1>
             <form action="">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="uname" placeholder="name@example.com" required>
+                    <input type="text" class="form-control" id="username" placeholder="name@example.com" required>
                     <label for="floatingInput" class="ps-4 text-muted">Enter Your Username</label>
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                         else.</small>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="mail" placeholder="name@example.com" required>
+                    <input type="text" class="form-control" id="email" placeholder="name@example.com" required>
                     <label for="floatingInput" class="ps-4 text-muted">Enter Your Email</label>
 
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="pass" placeholder="name@example.com" required>
-                    <label for="floatingInput" class="ps-4 text-muted">Enter Password</label>
+                    <label for="floatingInput" class="ps-4 text-muted">Enter password</label>
 
                     <div class="" id="div1">8 Digit Remaining</div>
                 </div>
@@ -162,7 +164,7 @@
                 </div>
                 <div class="form-floating mb-3 mt-3">
                     <div class="d-flex justify-content-start align-items-center ">
-                        <button id="btn-check" class="btn my-3 login-btn" disabled> Log in </button>
+                        <button type="button" id="btn-check" class="btn my-3 login-btn" disabled> Log in </button>
                         <p class="ms-5 mt-2 align-self-center">Don't Have Account? <a href="signup.html">Sign up
                                 here!</a> </p>
                         <!-- <button id="btn-check" class="btn my-3 login-btn" > Sign Up</button> -->
@@ -215,7 +217,7 @@
             <div class="row mt-5 pt-4">
 
                 <!--Grid column-->
-                <div class="col-md-9 mb-md-0 mb-5">
+                <div class="col-md-9 mb-md-0 mb-5 col-12">
                     <form id="contact-form" name="contact-form" action="" method="POST">
 
                         <!--Grid row-->
@@ -251,7 +253,7 @@
                 </div>
                 <!--Grid column-->
                 <!--Grid column-->
-                <div class="col-md-3 text-center">
+                <div class="col-md-3 text-center col-12">
                     <ul class="list-unstyled mb-0">
                         <li><i class="fas fa-map-marker-alt fa-2x"></i>
                             <p>Sutex Bank College Of Computer Application</p>
@@ -379,7 +381,7 @@
     </section>
 
     <!-- -------------------------------------  Our Footer End---------------------------------------------- -->
-
+    <script src="js/app.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
