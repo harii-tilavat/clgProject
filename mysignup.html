@@ -5,17 +5,105 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .header{
+        .header {
             clip-path: none;
             height: 90vh;
         }
+
+        .mycontainer {
+            width: 800px;
+            margin: 100px auto;
+        }
+
+        .myform {
+            /* margin-top: 100px;
+            background: linear-gradient(rgba(0, 168, 255, 0.6), rgba(0, 168, 255, 0.3)), url(../img/header.jpg);
+            background-size: 100% 100%;
+            clip-path: polygon(100% 0%, 100% 77%, 50% 100%, 0 75%, 0 0); */
+            background-color: #f0f0f0;
+        }
+
+        .login-text {
+            animation-name: example;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        @keyframes example {
+            0% {
+
+                left: 0px;
+                top: 0px;
+            }
+
+            50% {
+                left: 50px;
+
+            }
+
+            100% {
+
+                left: 0px;
+                /* top: 200px; */
+            }
+
+
+
+
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#AddTextState").hide(1);
+            $("#check").click(function () {
+                $("#btn-check").attr("disabled", !this.checked);
+            });
+            $("#txtarea").keyup(function () {
+                document.getElementById("txtarea").maxLength = "100";
+                var n1 = $(this).val().length;
+                var max = 500;
+                $('#remainingC').text(n1 + " / " + max + " Words");
+            });
+            $("#add-btn").click(function () {
+                var lastValue = $('#inputState option:last-child').val();
+                var name, num;
+                num = parseInt(lastValue);
+                num = num + 1;
+                name = document.getElementById("AddTextState").value;
+                $('#inputState').append(new Option(name, num));
+                num = num + 1;
+            });
+            $("#add-btn").hover(function () {
+                $("#AddTextState").show(500);
+            });
+            //   
+            $("#password").keyup(function () {
+                document.getElementById("password").maxLength = "8";
+                var n1 = $(this).val().length;
+                var max = 8;
+                n1 = max - n1;
+
+                if (n1 > 4) {
+                    // $('#div1').text(n1 + " Digits Remianing");
+                    $('#div1').text("Not Good");
+                    $('#div2').text(n1);
+
+                } else {
+                    $('#div1').text("OKAY!!");
+                    $('#div1').css('color', 'green');
+                }
+            });
+        });
+    </script>
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 </head>
 
@@ -25,7 +113,8 @@
             <div class="container ">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="container-fluid text-uppercase">
-                        <a class="navbar-brand text-white fs-2" href="#"><img src="img/logomain.png" alt="" width="60"> PROFLEX</a>
+                        <a class="navbar-brand text-white fs-2" href="#"><img src="img/logomain.png" alt="" width="60">
+                            PROFLEX</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -33,15 +122,20 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                                <li class="nav-item"><a class="nav-link" aria-current="page" href="home.html">Home</a>
+                                <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                        href="home.html">Home</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link " aria-current="page" href="service.html">Service</a>
+                                <li class="nav-item"><a class="nav-link " aria-current="page"
+                                        href="service.html">Service</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link " aria-current="page" href="price.html">Price</a>
+                                <li class="nav-item"><a class="nav-link " aria-current="page"
+                                        href="price.html">Price</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link " aria-current="page" href="about.html">About</a>
+                                <li class="nav-item"><a class="nav-link " aria-current="page"
+                                        href="about.html">About</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="contact.html">Contact</a>
+                                <li class="nav-item"><a class="nav-link " aria-current="page"
+                                        href="contact.html">Contact</a>
                                 </li>
                             </ul>
 
@@ -60,15 +154,91 @@
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing</p>
                 <div class="header-buttons">
                     <a href="login.html">Login</a>
-                    <a href="signup.html" >Signup</a>
+                    <a href="signup.html">Signup</a>
                 </div>
             </div>
         </section>
     </section>
     <!-- -------------------------------------Header Part End---------------------------------------------- -->
+    <div class="myform  p-5">
+        <div class="mycontainer">
 
+            <h1 class="login-text">Sign Up Here</h1>
+            <form action="">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+                                required>
+                            <label for="floatingInput" class="ps-4 text-muted">Enter Name</label>
 
-  
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+                                required>
+                            <label for="floatingInput" class="ps-4 text-muted">Enter Your Last Name</label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                    <label for="floatingInput" class="ps-4 text-muted">Enter Your Email</label>
+
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                    <label for="floatingInput" class="ps-4 text-muted">Enter Your Number</label>
+
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                    <label for="floatingInput" class="ps-4 text-muted">Enter Username</label>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="password" placeholder="name@example.com"
+                                required>
+                            <label for="floatingInput" class="ps-4 text-muted">Create Password</label>
+                            <small id="div1">H</small>
+                            <small id="div2">HA</small>
+
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="password2" placeholder="name@example.com"
+                                required>
+                            <label for="floatingInput" class="ps-4 text-muted">Confirm Password</label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <!-- <label for="txtarea">Describe Your-self</label> -->
+                    <textarea class="form-control" id="txtarea" rows="3" placeholder="Describe Your-self"></textarea>
+                    <div class="text-muted" id="remainingC">0 / 150 Words</div>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="check">
+                    <label class="form-check-label" for="Check1">I agree to the <a href="home.html"> terms and
+                            conditions.</a></label>
+                </div>
+                <div class="form-floating mb-3 mt-3">
+                    <div class="d-flex justify-content-start align-items-center ">
+                        <button id="btn-check" class="btn my-3 login-btn" disabled
+                            onclick="window.location='login.html'"> Create Account</button>
+
+                        <!-- <button id="btn-check" class="btn my-3 login-btn" > Sign Up</button> -->
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
 
     <!-- ------------------------------------- Project Work Start---------------------------------------------- -->
 
@@ -94,9 +264,9 @@
         </div>
     </section>
     <!-- ------------------------------------- Project Work End---------------------------------------------- -->
-   
 
-    
+
+
 
     <section class="contact">
 
@@ -135,7 +305,7 @@
                             </div>
                             <div class="form-floating mb-3 ">
                                 <input type="text" class="form-control h-100px" id="floatingInput"
-                                    placeholder="name@example.com" required >
+                                    placeholder="name@example.com" required>
                                 <label for="floatingInput" class="ps-4 text-muted">Enter Subject</label>
                             </div>
                             <div class="form-floating mb-3 d-flex justify-content-start ">
@@ -169,34 +339,37 @@
 
         </section>
     </section>
-  <!-- ------------------------------------- Extra div  Start---------------------------------------------- -->
+    <!-- ------------------------------------- Extra div  Start---------------------------------------------- -->
 
-  <section class="header-extra-div">
-    <div class="container">
-        <div class="row text-center">
-            <div class="extra-div col-lg-4 col-md-4  col-12 ">
-                <a href="#" class="p-2"><i class="fa-3x fa fa-desktop"></i></a>
-                <h2 class="fw-bold  p-2">EASY TO USE</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi illo sint quam consectetur Lorem.
-                    voluptate.</p>
-            </div>
-            <div class="extra-div col-lg-4 col-md-4  col-12 ">
-                <a href="#" class="p-2"><i class="fa-3x fa fa-trophy"></i></a>
-                <h2 class="fw-bold  p-2">AWESOME DESIGN</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi illo sint quam consectetur Lorem.
-                    voluptate.</p>
-            </div>
-            <div class="extra-div col-lg-4 col-md-4  col-12">
-                <a href="#" class="p-2"><i class="fa-3x fa fa-magic"></i></a>
-                <h2 class="fw-bold  p-2">EASY TO CUSTOMIZE</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi illo sint quam consectetur Lorem.
-                    voluptate.</p>
+    <section class="header-extra-div">
+        <div class="container">
+            <div class="row text-center">
+                <div class="extra-div col-lg-4 col-md-4  col-12 ">
+                    <a href="#" class="p-2"><i class="fa-3x fa fa-desktop"></i></a>
+                    <h2 class="fw-bold  p-2">EASY TO USE</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi illo sint quam consectetur
+                        Lorem.
+                        voluptate.</p>
+                </div>
+                <div class="extra-div col-lg-4 col-md-4  col-12 ">
+                    <a href="#" class="p-2"><i class="fa-3x fa fa-trophy"></i></a>
+                    <h2 class="fw-bold  p-2">AWESOME DESIGN</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi illo sint quam consectetur
+                        Lorem.
+                        voluptate.</p>
+                </div>
+                <div class="extra-div col-lg-4 col-md-4  col-12">
+                    <a href="#" class="p-2"><i class="fa-3x fa fa-magic"></i></a>
+                    <h2 class="fw-bold  p-2">EASY TO CUSTOMIZE</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi illo sint quam consectetur
+                        Lorem.
+                        voluptate.</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ------------------------------------- Extra div  End---------------------------------------------- -->
+    <!-- ------------------------------------- Extra div  End---------------------------------------------- -->
     <!-- -------------------------------------  Our conrtact End---------------------------------------------- -->
 
     <!-- -------------------------------------  Our news Start---------------------------------------------- -->
@@ -225,7 +398,9 @@
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-12 text-start">
                     <h4>ABOUT PROFLEX</h4>
-                    <p>We work with local, national and international companies in a variety of industries. Our clients turn to Paragraph because they are looking for Our clients turn to Paragraph because they are looking for </p>
+                    <p>We work with local, national and international companies in a variety of industries. Our
+                        clients turn to Paragraph because they are looking for Our clients turn to Paragraph because
+                        they are looking for </p>
                 </div>
                 <div class="col-lg-4 col-md-12 col-12">
                     <h4>NAVIGATION LINKS</h4>
@@ -239,7 +414,8 @@
                 </div>
                 <div class="col-lg-4 col-md-12 col-12 text-start">
                     <h4>NEWS LETTER</h4>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui aliquam facere ex exercitationem.
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui aliquam facere ex
+                        exercitationem.
                     </p>
                     <section class="newsletter footer-news ">
 

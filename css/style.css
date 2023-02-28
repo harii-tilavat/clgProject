@@ -90,7 +90,7 @@ i {
   border-radius: 30px;
   transition: 0.2s;
 }
-.header .header-section .center-div .header-buttons a:hover {
+.header .header-section .center-div .header-buttons a:hover, .header .header-section .center-div .header-buttons .active {
   color: rgba(0, 168, 255, 0.6);
   background-color: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -288,6 +288,38 @@ i {
   font-size: 5em;
 }
 
+.demo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  font-size: clamp(2rem, 2.8vw, 5rem);
+  font-weight: bold;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+.typewriter {
+  width: 24.5ch;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 4px solid #212121;
+  animation: cursor 1s step-start infinite, text 2s steps(20) alternate infinite;
+  font-size: 2em;
+}
+
+@keyframes cursor {
+  0%, 100% {
+    border-color: #212121;
+  }
+}
+@keyframes text {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 24.5ch;
+  }
+}
 @media only screen and (max-width: 991px) {
   .header .header-section {
     font-size: 0.9em;

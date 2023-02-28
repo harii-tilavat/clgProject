@@ -9,136 +9,88 @@
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .header {
-            clip-path: none;
-            height: 90vh;
-        }
+    <link rel="stylesheet" href="css/formstyle.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script> -->
+    <script src="js/jquery.js"></script>
 
-        .mycontainer {
-            width: 800px;
-            margin: 100px auto;
-        }
-
-        .myform {
-            /* margin-top: 100px;
-            background: linear-gradient(rgba(0, 168, 255, 0.6), rgba(0, 168, 255, 0.3)), url(../img/header.jpg);
-            background-size: 100% 100%;
-            clip-path: polygon(100% 0%, 100% 77%, 50% 100%, 0 75%, 0 0); */
-            background-color: #f0f0f0;
-        }
-
-        .login-text {
-            animation-name: example;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            position: relative;
-            transition: 0.3s;
-        }
-
-        @keyframes example {
-            0% {
-
-                left: 0px;
-                top: 0px;
-            }
-
-            50% {
-                left: 50px;
-
-            }
-
-            100% {
-
-                left: 0px;
-                /* top: 200px; */
-            }
-
-
-
-
-        }
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script>
-        // $(document).ready(function () {
-        //     $("#check").click(function () {
-        //         $("#btn-check").attr("disabled", !this.checked);
-        //     });
-        //     $('#div1').css('color', 'red');
-        //     $("#password").keyup(function () {
-        //         var pass1 = document.getElementById("password").length;
-        //         var pass2 = document.getElementById("password2").length;
-        //         document.getElementById("password").maxLength = "8";
-
-        //         var n1 = $(this).val().length;
-        //         var max = 8;
-        //         n1 = max - n1;
-
-        //         if (n1 > 0) {
-
-        //             $('#div1').text(n1 + " Digits Remianing");
-
-        //         } else {
-        //             if (pass1 != pass2) {
-        //                 $('#div1').text("Password is Not Same!");
-        //             } else {
-        //                 $('#div1').text("OKAY!!");
-        //                 $('#div1').css('color', 'green');
-        //             }
-
-        //         }
-
-        //     });
-        // });
+        // 
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById('demo1').innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "term.html", true);
+            xhttp.send();
+        }
+        // 
         $(document).ready(function () {
-      $("#AddTextState").hide(1);
-      $("#check").click(function () {
-        $("#btn-check").attr("disabled", !this.checked);
-      });
-      $("#txtarea").keyup(function () {
-        var n1 = $(this).val().length;
-        var max = 150;
-        $('#remainingC').text(n1 + " / " + max + " Words");
-      });
-      $("#add-btn").click(function () {
-        var lastValue = $('#inputState option:last-child').val();
-        var name, num;
-        num = parseInt(lastValue);
-        num = num + 1;
-        name = document.getElementById("AddTextState").value;
-        $('#inputState').append(new Option(name, num));
-        num = num + 1;
-      });
-      $("#add-btn").hover(function () {
-        $("#AddTextState").show(500);
-      });
+            $("#accept-terms").click(function () {
+                $("#btn-check").attr("disabled", !this.checked);
+            });
 
-    });  
-    //     $(document).ready(function(){
-    //     $("#check").click(function(){
-    //       $("#btn-check").attr("disabled", !this.checked);
-    //     });
-    //     $("#password").keyup(function(){
-    //       document.getElementById("password").maxLength = "8";
-    //       var n1 = $(this).val().length;
-    //       var max=8;
-    //       n1 = max - n1;
-    //       if(n1 > 0)
-    //       {
-    //         $('#div1').text(n1 + " Digits Remianing");
-    //       }
-    //       else{
-    //         $('#div1').text("DONE !!");
-    //       }
-    //     });
-    //   });     
+            $("#exampleFormControlTextarea1").keyup(function () {
+                var max = 100;
+                document.getElementById("exampleFormControlTextarea1").maxLength = "100";
+                var n1 = $(this).val().length;
+                $('#remainingC').text(n1 + " / " + max + " Words");
+            });
+            $("#add-btn").click(function () {
+
+                var lastValue = $('#inputState option:last-child').val();
+                var name, num;
+                num = parseInt(lastValue);
+                num = num + 1;
+                name = document.getElementById("AddTextState").value;
+
+                if (name == null || name == "") {
+                    alert("Please Enter At least One city! ");
+                    return;
+                }
+                if (isNaN(name) == false) {
+                    alert("Text Are not Allowed! ");
+
+                } else {
+                    $('#inputState').append(new Option(name, num));
+                    num = num + 1;
+                    alert(name + " Succesfully Added! ");
+                }
+
+            });
+
+            $('#btn-check').click(function () {
+                var nm = document.getElementById("username").value;
+                
+                var mail = document.getElementById("email").value;
+                var pass = document.getElementById("password").value;
+                var pass2 = document.getElementById("password2").value;
+                if(nm!="" && mail!= "" && pass!="" && pass2!=""){
+                    alert("Hey " +nm + " Your Account has been Created Successfully! 😄😄");
+                    window.location.replace("login.html");
+                    return;
+                }
+                else{
+                    alert("Please Enter Your Details! ");
+                }            
+            })
+            // document.location.href = "www.yoursite.com";
+        });
     </script>
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 </head>
 
 <body>
+    <div class="loader" id="loader">
+        <!-- <img src="loader.svg" alt="Loading"> -->
+        <!-- <div class="loader"></div> -->
+        <div class="spinner-border " style="width: 5rem; height: 5rem;" role="status">
+            <span class="visually-hidden"></span>
+        </div>
+
+    </div>
     <section class="header ">
         <div class="topHeader fw-bold ">
             <div class="container ">
@@ -153,8 +105,7 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                                <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                        href="home.html">Home</a>
+                                <li class="nav-item"><a class="nav-link " aria-current="page" href="home.html">Home</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link " aria-current="page"
                                         href="service.html">Service</a>
@@ -178,90 +129,111 @@
         </div>
         <section class="header-section">
             <div class="center-div ">
-                <h1 class="fw-bold">We are the Best Developers</h1>
+                <!-- <h1 class="fw-bold">We are the Best Developers</h1> -->
+                <div class="demo-container">
+                    <div class="typewriter ">We Are the Best Developers</div>
+                </div>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing</p>
                 <div class="header-buttons">
                     <a href="login.html">Login</a>
-                    <a href="signup.html">Signup</a>
+                    <a href="signup.html" class="active">Signup</a>
                 </div>
             </div>
         </section>
     </section>
     <!-- -------------------------------------Header Part End---------------------------------------------- -->
     <div class="myform  p-5">
-        <div class="mycontainer">
+        <div class="container">
 
-            <h1 class="login-text">Sign Up Here</h1>
-            <form action="">
+
+            <!-- Main Form -->
+            <form action="" class="main-form" id="form">
                 <div class="row">
-                    <div class="col-6">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
-                                required>
-                            <label for="floatingInput" class="ps-4 text-muted">Enter Name</label>
+                    <div class="col">
+                        <div class="form-group my-2">
 
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
-                                required>
-                            <label for="floatingInput" class="ps-4 text-muted">Enter Your Last Name</label>
+                            <p class="h2 login-text">Register With Us.</p>
 
+                            <label for="Username">Username</label>
+                            <input type="text" name="username" id="username" class="form-control"
+                                placeholder="Enter your name">
+                            <small id="username_error_message"></small>
                         </div>
                     </div>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                    <label for="floatingInput" class="ps-4 text-muted">Enter Your Email</label>
+                <div class="form-group my-2">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" class="form-control" placeholder="Enter your Email">
+                    <small id="email_error_message">Error message</small>
+                </div>
+                <div class="form-group my-2">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="form-control"
+                        placeholder="Enter your Password">
+                    <small id="password_error_message"></small>
+                </div>
+                <div class="form-group my-2">
+                    <label for="password2">Confirm Password</label>
+                    <input type="password" name="password2" id="password2" class="form-control"
+                        placeholder="Enter your password again">
+                    <small id="password2_error_message"></small>
+                </div>
+                <div class="form-group my-2">
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender" class="form-control">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
 
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                    <label for="floatingInput" class="ps-4 text-muted">Enter Your Number</label>
-
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                    <label for="floatingInput" class="ps-4 text-muted">Enter Username</label>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="password" placeholder="name@example.com"
-                                required>
-                            <label for="floatingInput" class="ps-4 text-muted">Create Password</label>
-                            
+                <!--  -->
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose State</option>
+                            <option value="1">Surat</option>
+                            <option value="2">Ahemdabad</option>
+                            <option value="3">Bharuch</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row mt-3 align-items-center">
+                            <div class="col-3">
+                                <button type="button" id="add-btn" class="btn bg-primary text-white">Add City</button>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" id="AddTextState" class="m-2 form-control" placeholder="Add City">
+                                <!-- <button type="button" id="add-btn" class="btn col-md-2">Add state</button> -->
+                            </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="password2" placeholder="name@example.com"
-                                required>
-                            <label for="floatingInput" class="ps-4 text-muted">Confirm Password</label>
-                            
-                        </div>
-                    </div>
                 </div>
-                <div class="form-group mb-4">
-                    <!-- <label for="txtarea">Describe Your-self</label> -->
-                    <textarea class="form-control" id="txtarea" rows="3" placeholder="Describe Your-self"></textarea>
-                    <div class="text-muted" id="remainingC">0 / 150 Words</div>
-                  </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="check">
-                    <label class="form-check-label" for="Check1">I agree to the <a href="home.html"> terms and
-                            conditions.</a></label>
+
+                <div class="form-group my-2">
+                    <label for="exampleFormControlTextarea1">Enter message</label>
+                    <textarea class="form-control " id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <div class="text-muted" id="remainingC">0 / 100 Words</div>
                 </div>
-                <div class="form-floating mb-3 mt-3">
-                    <div class="d-flex justify-content-start align-items-center ">
-                        <button id="btn-check" class="btn my-3 login-btn" disabled onclick="window.location='login.html'"> Create Account</button>
+
+
+
+                <div class="form-check my-2">
+                    <input type="checkbox" id="accept-terms" class="form-check-input">
+                    <label for="" class="form-check-label"> Accept
                         
-                        <!-- <button id="btn-check" class="btn my-3 login-btn" > Sign Up</button> -->
-                    </div>
+                        <a onclick="loadDoc()" class="text-decoration-underline">Tearm and Condition</a>
+                    </label>
+                    <p id="demo1"></p>
                 </div>
-
+                <div class="d-flex">
+                    <button type="button" id="btn-check" class="btn my-3 login-btn" disabled>
+                       Create Account
+                        </button>
+                    <p class=" ms-5 mt-4 align-self-center">Have an Account? <a href="login.html">Login Here</a> </p>
+                </div>
+                <!-- <button type="submit" class="mt-3" id="btn-check" disabled  ><a href="login.html" class="login-btn"> Create Account</a></button> -->
             </form>
+
         </div>
     </div>
 
@@ -329,7 +301,7 @@
                                 <label for="floatingInput" class="ps-4 text-muted">Enter Your Mobile No</label>
                             </div>
                             <div class="form-floating mb-3 ">
-                                <input type="text" class="form-control h-100px" id="floatingInput"
+                                <input type="text" class="form-control " id="floatingInput"
                                     placeholder="name@example.com" required>
                                 <label for="floatingInput" class="ps-4 text-muted">Enter Subject</label>
                             </div>
@@ -471,7 +443,7 @@
     </section>
 
     <!-- -------------------------------------  Our Footer End---------------------------------------------- -->
-
+    <script src="js/app.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->

@@ -1,0 +1,98 @@
+.header {
+    clip-path: none;
+    height: 90vh;
+}
+
+/* .mycontainer {
+    width: 800px;
+    margin: 100px auto;
+} */
+
+.myform {
+    
+    background-color: #f0f0f0;
+}
+
+.login-text {
+    animation-name: example;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    position: relative;
+    transition: 0.3s;
+}
+
+.main-form {
+    width: 800px;
+    margin: auto;
+}
+
+
+/* Loader */
+.loader {
+    position: fixed;
+    top: 50%;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+
+    /* background: rgba(255, 255, 255, 0.8); */
+    background-size: cover;
+}
+
+.loader img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#imagePreview {
+    width: 300px;
+    min-height: 100px;
+
+    border: 1px solid black;
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#image-text {
+    font-weight: bold;
+
+}
+
+.image-preview--image {
+    display: none;
+    width: 100%;
+}
+
+.btn-primary {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+@keyframes example {
+    0% {
+
+        left: -100px;
+        
+    }
+
+    50% {
+        left: 100px;
+
+    }
+
+    100% {
+
+        left: -100px;
+        /* top: 200px; */
+    }
+}

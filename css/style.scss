@@ -105,7 +105,7 @@ i {
                     transition: 0.2s;
                 }
 
-                a:hover {
+                a:hover ,.active{
                     color: rgba(0, 168, 255, 0.6);
                     background-color: white;
                     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -338,6 +338,56 @@ i {
         }
     }
 }
+// ---------------------------------Animation---------------------------------------
+
+
+
+
+
+.demo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    font-size: clamp(2rem, 2.8vw, 5rem);
+    // font-family: Raleway;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+.typewriter {
+    width: 24.5ch;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 4px solid #212121;
+    animation: cursor 1s step-start infinite,
+        text 2s steps(20) alternate infinite;
+        font-size: 2em;
+}
+
+@keyframes cursor {
+
+    0%,
+    100% {
+        border-color: #212121;
+    }
+}
+
+@keyframes text {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 24.5ch;
+    }
+}
+
+
+
+
+// ----------------------------Animation--------------------------------------------
 @media only screen and (max-width:991px) {
     .header {
         .header-section {
